@@ -1,10 +1,8 @@
-# 使用阿里云的 Maven+JDK 镜像，彻底解决拉取失败
-FROM registry.cn-hangzhou.aliyuncs.com/aliyun-maven/maven:3.8-openjdk-17
+# 使用华为云的 Maven+JDK17 镜像，彻底解决海外拉取失败
+FROM swr.cn-north-4.myhuaweicloud.com/opensourceway/maven:3.8-openjdk-17
 
-# 设置工作目录
 WORKDIR /app
 
-# 复制整个项目到容器
 COPY . .
 
 # 构建子模块，用阿里云镜像加速
