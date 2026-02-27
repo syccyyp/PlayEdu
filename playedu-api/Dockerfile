@@ -12,4 +12,4 @@ RUN apt-get update && apt-get install -y maven
 RUN mvn clean package -DskipTests -pl playedu-api -am -Dmaven.repo.remote=https://maven.aliyun.com/repository/public
 
 # 启动命令（路径精准匹配）
-CMD ["java", "-jar", "target/playedu.jar"]
+CMD ["java", "-jar", "playedu-api/target/playedu.jar"]
