@@ -1,11 +1,14 @@
-# 使用华为云的 Maven+JDK17 镜像，彻底解决海外拉取失败
-FROM swr.cn-north-4.myhuaweicloud.com/opensourceway/maven:3.8-openjdk-17
+# 使用一个公开、无需认证的基础镜像
+FROM azul/zulu-openjdk:17-latest
 
+# 设置工作目录
 WORKDIR /app
 
+# 复制整个项目到容器
 COPY . .
 
-# 构建子模块，用阿里云镜像加速
+# 直接下载 Maven 并构建（彻底绕开镜像拉取问题）
+RUN apt-get update && apt-get install -y maven
 RUN mvn clean package -DskipTests -pl playedu-api -am -Dmaven.repo.remote=https://maven.aliyun.com/repository/public
 
 # 启动命令（路径精准匹配）
