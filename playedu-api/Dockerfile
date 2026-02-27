@@ -14,3 +14,6 @@ RUN cp playedu-api/target/*.jar /app/playedu.jar
 
 # 启动命令（直接从根目录找 Jar 包）
 CMD ["java", "-jar", "playedu.jar"]
+FROM azul/zulu-openjdk:17-latest
+# 强制刷新缓存 20260227  # 这行是新增的注释，随便写点内容就行
+WORKDIR /app
