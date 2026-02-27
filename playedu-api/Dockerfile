@@ -13,7 +13,7 @@ FROM openjdk:17-jdk-slim
 WORKDIR /app
 
 # 从构建阶段复制构建好的 Jar 包
-COPY --from=builder /app/playedu-api/target/playedu.jar .
+COPY --from=builder /app/playedu-api/target/playedu.jar ./playedu.jar
 
 # 启动命令
 CMD ["java", "-jar", "playedu.jar"]
