@@ -1,4 +1,10 @@
 FROM azul/zulu-openjdk:17-latest
+# 强制刷新缓存 20260227
+WORKDIR /app
+EXPOSE 8080  # <-- 新增这一行，告诉 Railway 服务用 8080 端口
+COPY . .
+# ... 以下内容保持不变
+FROM azul/zulu-openjdk:17-latest
 
 WORKDIR /app
 
